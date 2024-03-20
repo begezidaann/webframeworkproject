@@ -13,7 +13,7 @@
                 <div class="card-header">{{ __('Table Users') }}</div>
   
                 <div class="card-body">
-                    <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary">
+                    <a href="{{ route('users.create') }}" class="btn btn-sm btn-dark">
                         Tambah User
                     </a>
                     <table class="table">
@@ -35,7 +35,7 @@
                                 <th scope="row">{{ $no }}</th>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
-                                <td>{{$row->role_id}}</td>
+                                <td>{{$row->role->role_name}}</td>
                                 <td>{{$row->status}}</td>
                                 <td> 
                                     <a href="{{ route('users.edit', $row->id) }}" class="btn btn-sm btn-warning">

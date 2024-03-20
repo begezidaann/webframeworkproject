@@ -36,10 +36,10 @@ class UserController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' =>$data['role']
+            'role_id' =>$data['role']
         ]);
          
-        return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
+        return redirect()->route('users.index')->withSuccess('Great! You have Successfully Add a User');
     }
 
     public function edit(User $user)
@@ -57,11 +57,11 @@ class UserController extends Controller
         ]);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = $request->role;
+        $user->role_id = $request->role;
         if(!empty($request->password)) $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
+        return redirect()->route('users.index')->withSuccess('Great! You have Successfully Updated a User');
     }
 
     public function destroy(User $user)

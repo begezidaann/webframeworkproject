@@ -49,7 +49,7 @@
                                 <select class="form-select" id="role" name="role" aria-label="role">
                                     <option value="">Choose</option>
                                     @foreach($roles as $val)
-                                        <option value="{{$val->guid}}" {{ ($val->guid == $user->role) ? 'selected' : '' }}>{{$val->name}}</option>
+                                        <option value="{{$val->id}}" {{ ($val->guid == $user->role) ? 'selected' : '' }}>{{$val->role_name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('role'))

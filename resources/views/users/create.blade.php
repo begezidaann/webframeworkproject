@@ -1,5 +1,4 @@
-@extends('layout')
-  
+@extends('layout')  
 @section('content')
 <main class="login-form">
   <div class="cotainer">
@@ -47,7 +46,7 @@
                                 <select class="form-select" id="role" name="role" aria-label="role">
                                     <option value="">Choose</option>
                                     @foreach($roles as $val)
-                                        <option value="{{$val->guid}}">{{$val->name}}</option>
+                                        <option value="{{$val->id}}">{{$val->role_name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('role'))
