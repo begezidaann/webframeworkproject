@@ -76,10 +76,10 @@
                             <a class="nav-link" href="{{ route('users.index') }}">User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Master Barang</a>
+                            <a class="nav-link" href="">Product Master</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Transaksi</a>
+                            <a class="nav-link" href="#">Transaction</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>

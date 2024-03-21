@@ -14,12 +14,12 @@
   
                 <div class="card-body">
                     <a href="{{ route('users.create') }}" class="btn btn-sm btn-dark">
-                        Tambah User
+                        Add User
                     </a>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Full Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
