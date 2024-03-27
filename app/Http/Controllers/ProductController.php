@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::All();
+        return view('products/index', compact('products'));
     }
 
     /**
@@ -19,7 +21,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product_types = ProductType::All();
+        return view('products/create', compact('product_types'));
     }
 
     /**
@@ -27,7 +30,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd($request);
+         $request->validate([
+            'product_name' => 'required',
+            'qty' => 'required',
+            'selling_price' => 'required',
+            'buying_price' => 'required',
+            'product_typeid' => 'required',
+        ]);
+           
+        $data = $request->all();
+        // dd($data);
+        $check = User::create([
+            'product_name' => $data['product_name'],
+            'qty' => $data['qty'],
+            'selling_price' => $data['selling_price'],
+            'buying_price' => $data['buying_price'],
+            'product_typeid' =>$data['product_type']
+        ]);
+         
+        return redirect()->route('products.index')->withSuccess('Great! You have Successfully Add a User');
     }
 
     /**

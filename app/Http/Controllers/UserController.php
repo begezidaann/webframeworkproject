@@ -10,9 +10,8 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::All();
-        $ruangans = "Cek data";
 
-        return view('users/index', compact('users', 'ruangans'));
+        return view('users/index', compact('users'));
     }
 
     public function create(){
@@ -52,22 +51,23 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
+            'password' => 'nullable|min:8',
             'role' => 'required',
         ]);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role;
-        if(!empty($request->password)) $user->password = Hash::make($request->password);
-        $user->save();
+        if(!empty($request->password)) $user->password = Hash::make($request->password);        
+        $user->role_id = $request->role;    
+        $user->save();    
 
-        return redirect()->route('users.index')->withSuccess('Great! You have Successfully Updated a User');
+        return redirect()->route('users.index')->withSuccess('Great! You have Successfully Updated a User'.$user->name);
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success','user has been deleted successfully');
+        return redirect()->route('users.index')->with('Success','user has been deleted successfully');
     }
 
 }

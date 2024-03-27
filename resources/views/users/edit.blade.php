@@ -2,13 +2,12 @@
   
 @section('content')
 <main class="login-form">
-  <div class="cotainer">
+  <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-10">
               <div class="card">
                   <div class="card-header">Edit User</div>
-                  <div class="card-body">
-  
+                  <div class="card-body">  
                       <form action="{{ route('users.update' , $user->id) }}"  method="POST">
                         @csrf
                         @method('PUT')
@@ -36,7 +35,7 @@
                           <div class="form-group row mt-3">
                               <label for="password" class="col-md-4 col-form-label text-right">Password</label>
                               <div class="col-md-6">
-                                  <input type="password" id="password" class="form-control" name="password" >
+                                  <input type="password" id="password" class="form-control" name="password">
                                   @if ($errors->has('password'))
                                       <span class="text-danger">{{ $errors->first('password') }}</span>
                                   @endif
@@ -49,7 +48,7 @@
                                 <select class="form-select" id="role" name="role" aria-label="role">
                                     <option value="">Choose</option>
                                     @foreach($roles as $val)
-                                        <option value="{{$val->id}}" {{ ($val->guid == $user->role) ? 'selected' : '' }}>{{$val->role_name}}</option>
+                                        <option value="{{$val->id}}" {{ ($val->id == $user->role_id) ? 'selected' : '' }}>{{$val->role_name}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('role'))

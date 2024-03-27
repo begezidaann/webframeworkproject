@@ -5,44 +5,46 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                @if (session('success'))
+            @if (session('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="card-header">{{ __('Table Users') }}</div>
+                <div class="card-header">{{ __('Table Product') }}</div>
   
                 <div class="card-body">
-                    <a href="{{ route('users.create') }}" class="btn btn-sm btn-dark">
-                        Add User
+                    <a href="{{ route('products.create') }}" class="btn btn-sm btn-dark">
+                        Add Product
                     </a>
-                    <table class="table" id="users">
+                    <table class="table" id="products">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Qty</th>
+                                <th scope="col">Selling Price</th>
+                                <th scope="col">Product Type Name</th>
+                                <th scope="col">Product Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 0; ?>
-                            @foreach($users as $row)
+                            @foreach($products as $row)
                             <?php $no++ ?>
                             <tr>
                                 <th scope="row">{{ $no }}</th>
-                                <td>{{$row->name}}</td>
-                                <td>{{$row->email}}</td>
-                                <td>{{$row->role->role_name}}</td>
-                                <td>{{$row->status}}</td>
-                                <td> 
-                                    <a href="{{ route('users.edit', $row->id) }}" class="btn btn-sm btn-warning">
+                                <td>{{$row->product_name}}</td>
+                                <td>{{$row->qty}}</td>
+                                <td>{{$row->selling_price}}</td>
+                                <td>{{$row->product_typeid->product_nametype}}</td>
+                                <td>{{$row->product_stat}}</td>
+                                <td>                
+                                    <a href="" class="btn btn-sm btn-warning">
                                         Edit
                                     </a>
-                                    <form action="{{ route('users.destroy',$row->id) }}" method="POST"
-                                    style="display: inline" onsubmit="return confirm('Do you really want to delete {{ $row->name }}?');">
+                                    <form action="" method="POST"
+                                    style="display: inline" onsubmit="return confirm('Do you really want to delete ?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger"><span class="text-muted">
@@ -60,6 +62,6 @@
     </div>
 </div>
 <script>
-    new DataTable('#users');
+    new DataTable('#products');
 </script>
 @endsection
